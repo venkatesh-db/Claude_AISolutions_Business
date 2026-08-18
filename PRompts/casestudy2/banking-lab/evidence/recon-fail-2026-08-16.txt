@@ -1,0 +1,32 @@
+RECONCILIATION EXCEPTION REPORT
+Run date      : 2026-08-16
+Batch         : NIGHTLY-INT-ACCRUAL
+Product       : SAV-STD
+Accounts      : 5000
+
+Sum of per-account accruals ...     60214.67
+GL control total ..............     60214.47
+Difference ....................         0.20
+
+STATUS: FAILED  (tolerance 0.00)
+
+This exception has recurred on every run since 2026-07-02.
+The difference is not constant; it varies with the account mix.
+
+Sample of first 12 accounts in the batch:
+
+  account_ref     balance      accrued
+  ACC-100000    160217.27        15.36
+  ACC-100001      7227.68         0.69
+  ACC-100002     69482.30         6.66
+  ACC-100003     56579.47         5.43
+  ACC-100004    184381.33        17.68
+  ACC-100005    169498.17        16.25
+  ACC-100006    223152.71        21.40
+  ACC-100007     22647.77         2.17
+  ACC-100008    106058.53        10.17
+  ACC-100009      8419.51         0.81
+  ACC-100010     55440.86         5.32
+  ACC-100011    126833.47        12.16
+
+Raised by: recon-engine v4.2
