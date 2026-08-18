@@ -1,0 +1,2 @@
+
+Role - senior software enginner  , Domain - Retail  task- to implement a store service  tech stack - python business outcome  - make sure wokrs under high worldoad with 99.9% SLI Role outcome -feature of should tested at peak performanbce ad ensure its relaibale code  generate the prompt for claude desktop
