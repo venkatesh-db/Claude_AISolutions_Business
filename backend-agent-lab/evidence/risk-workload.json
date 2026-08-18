@@ -1,0 +1,11 @@
+{
+  "user_ramp": [
+    1,
+    5,
+    10
+  ],
+  "p95_target_ms": 200,
+  "error_rate_limit": 0.0,
+  "targets_are_placeholder": true,
+  "placeholder_reason": "knowledge/objectives/ and knowledge/traffic/ are both GAP folders for taskflow-ops \u2014 no real SLO or traffic shape exists yet"
+}

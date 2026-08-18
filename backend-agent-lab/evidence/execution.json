@@ -1,0 +1,32 @@
+{
+  "target_reachable": true,
+  "requests_sent": 10,
+  "successes": 10,
+  "distinct_task_ids": 10,
+  "status_codes": [
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201,
+    201
+  ],
+  "metrics_before": {
+    "uptime_seconds": 164.28,
+    "requests_total": 32,
+    "tasks_by_status": {
+      "queued": 10
+    }
+  },
+  "metrics_after": {
+    "uptime_seconds": 164.3,
+    "requests_total": 43,
+    "tasks_by_status": {
+      "queued": 20
+    }
+  }
+}

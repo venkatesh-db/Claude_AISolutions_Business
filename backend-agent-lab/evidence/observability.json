@@ -1,0 +1,12 @@
+{
+  "target": "http://localhost:8001/metrics",
+  "reachable": true,
+  "fields_confirmed": [
+    "uptime_seconds",
+    "requests_total",
+    "tasks_by_status"
+  ],
+  "tracing_available": false,
+  "tracing_gap_note": "no OpenTelemetry wiring exists in taskflow-ops yet",
+  "gate_passed": true
+}

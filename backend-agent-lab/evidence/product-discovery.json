@@ -1,0 +1,11 @@
+{
+  "requirement": "Support concurrent task creation without duplicates",
+  "journey": [
+    "/tasks",
+    "/tasks/{task_id}",
+    "/metrics"
+  ],
+  "journey_verified_against": "knowledge/api/openapi.json",
+  "unknowns": [],
+  "gate_passed": true
+}

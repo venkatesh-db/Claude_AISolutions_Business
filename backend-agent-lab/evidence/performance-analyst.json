@@ -1,0 +1,7 @@
+{
+  "insufficient_evidence": false,
+  "finding": "no bottleneck observed at this load level",
+  "confidence": "likely",
+  "confidence_capped_reason": "risk-workload targets are placeholders, not real SLOs",
+  "success_rate": 1.0
+}
