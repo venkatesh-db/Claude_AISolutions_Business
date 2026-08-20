@@ -43,6 +43,11 @@ finding worth catching before code gets written.
 
 ---
 
+
+
+
+
+
 ## The prompt
 
 Fill in the `<DEFECT>` block per exercise. Template below is populated

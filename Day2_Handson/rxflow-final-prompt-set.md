@@ -297,6 +297,42 @@ not verify.
 
 ## Level 2 · Author — Day 3
 
+'''
+
+Read-only. Do not modify any file. Do not write code.
+
+Work through this in five  stages.
+
+STAGE 1 — Read the code flow and provide code flow diagram
+
+Each service coder need to undertsand provide me code flow diagram new .md and html file
+
+
+STAGE 2 — category of issue
+
+Each service coder need to identify 1.memory leak 2.profiling 3. gc 4.business logic 5. code optimised seacrh sorting algorthims  provide me new .md
+
+STAGE 3 — chain of issues
+
+One code fix is done and other code depencdency would get impacted
+the proiject folder the code need to chain of link bt service and overall project
+
+STAGE 4 — domain specific issues
+
+domain find 10 issues
+
+Domain: prescription-to-lens ordering. A duplicate lens job means a
+lab cuts two lenses for one prescription — wasted material, a second
+charge, and a shipment nobody asked for.
+
+
+STAGE 5 — find all the current bugs , future bugs , sceanrio bugs
+
+create new md file to view it 
+
+'''
+
+
 Give participants this instruction and nothing else. No prompt template.
 
 ```
