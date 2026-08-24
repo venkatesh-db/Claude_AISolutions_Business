@@ -1,0 +1,663 @@
+
+
+******************* APPROACH1 ***********************************
+
+Prompt1-
+
+ Role- Principal architect ,
+ Task role -full stack engineer ,
+ domain -travel  ,
+  Feature -  Login - Order sucess ,
+  UI/ux- Refer .zip file ,
+   domainknowledge- learn from goibio ,makemytrip , skytravel
+
+    Techstack-python  Layer
+Technology
+API
+FastAPI, Pydantic v2
+Domain
+Plain Python service layer
+Data
+PostgreSQL, SQLAlchemy 2.x, Alembic
+Cache and locks
+Redis
+Async work
+Celery workers
+Events
+Kafka (Redpanda locally)
+Analytics
+pandas / Polars ETL
+Testing
+pytest, pytest-asyncio, hypothesis, testcontainers, locust
+Quality gates
+ruff, mypy --strict, bandit, pip-audit
+Ops
+Docker Compose, GitHub Actions, OpenTelemetry
+
+Question to you- domain knwoledge of the product scenario are u well wersed
+ Task1- i need you understadn this requiremnet clearly with domain  expert 10 years and
+ role -  full stack engineer  ( dont need prompt but confirmation )
+
+ Prompt2-
+
+first learn for zip file and focus on only travel domain requirmenet
+
+
+Prompt3-
+
+write the domain requirement doc (states, API contracts, event schema)
+before any code.  provide for end end in zip file
+
+
+Prompt4-
+
+save this information role - full stack engineer , LAyer1- ui Layer2- implemenattion level layer3 - businness logic domain functionality
+Layer4- feature ouctome in each activity login search seat are u wellversed ? no code
+
+Prompt5 -
+
+role - full stack engineer  can u delievr this task as implenet with relaibale code -confirmation
+
+Prompt6 -
+
+now generate a prompt from above conversation with great doamin speciifc code implementation
+
+Prompt7 -
+
+do u need a structured  prompt for ur agent or are u ready to generate the code
+
+Prompt8 -
+
+are u doamin expert code is it rate it ?
+if i want to improve what can be improved here ?
+
+Prompt9 - Context
+
+ This code base domain is travel why are u thinking about
+ icrctc  pls erase that context
+
+Prompt10 -
+
+ i guess the outcome of the code is not domain driven.
+ hwo many scenario did u think as domain expert from ur mindset
+in code ?rate it
+
+
+ --> cartservice  ( to understand ai need )
+
+ create me the domain knowledge on this repo with respect to api ,
+ db , archiecture , code execution on domain functionality ,
+ Domain scenarios , test cases other aspect very important
+ I will own this to train the claude agents for new enhancmenets
+
+
+******************* APPROACH2 ***********************************
+
+
+----> The model to follow — thin vertical slices, verified at every step, never big-bang:
+
+    DOMAIN_KNOWLEDGE.md , plus the validation/best-practice for each.
+
+    Three concrete options — pick one, they trade off speed vs. rigor differently.
+
+    ## 1. Vertical Slice + TDD (what I proposed for Month 1)
+    Build one thin path end-to-end (Login OTP: 1 endpoint, 1 test, 1 review) before starting the next. Every slice: RED → GREEN → REFACTOR, gates (ruff/mypy/bandit) must pass before you look at it.
+    - **Best when:** quality is the bottleneck (your stated problem), team is small (you + me), you can review each slice.
+    - **Cost:** slower total throughput early on — Month 1 covers maybe 1-2 screens, not 6.
+    - **Payoff:** defect rate becomes measurable and trends down, because nothing ships unverified.
+
+    ## 2. Contract-First (schema-driven)
+    Before any code: freeze the OpenAPI/Pydantic contracts and Kafka event schemas for the *entire* funnel (we already drafted this). Then implement against frozen contracts in parallel — API layer, DB layer, frontend — each side only trusts the contract, not each other's internals.
+    - **Best when:** you have (or will have) more than one person/agent working simultaneously, and want to avoid integration drift.
+    - **Cost:** upfront contract work has to be right, or every downstream slice inherits the same wrong assumption — this is exactly where my earlier unlabeled inference was risky.
+    - **Payoff:** parallel-safe; screens/services can be built out of order without blocking each other.
+
+    ## 3. Strangler / Reference-Anchored Build
+    Instead of designing from a mockup + inference, pick one real product (IndiGo, since we already verified live) as the literal reference implementation for field shapes, flows, and edge cases. Every screen gets built by matching IndiGo's actual behavior first, then diverging only where "International Smile" intentionally differs (premium positioning, different fare names).
+    - **Best when:** domain uncertainty is the main risk (which it has been all session) more than raw engineering risk.
+    - **Cost:** requires repeated live verification passes (like the goindigo.in check) before each slice — more browsing time per feature.
+    - **Payoff:** almost eliminates the "inferred vs. observed" ambiguity that caused the earlier doc problem — everything traces to a real, currently-live product.
+
+    **My recommendation given your stated constraint (limited time, past code quality bad):** run **#1 (Vertical Slice + TDD) as the engine**, but pull in **#3's discipline** at the start of each slice — 5 minutes checking IndiGo/real-product behavior for that one field/screen before writing the contract, instead of a separate big research phase. Skip #2 for now — it pays off with parallel teams, and right now it's just us, so its upfront cost isn't earned back yet.
+
+    Want me to start Slice 1 (Login OTP) under that hybrid model now?
+
+
+The Stitch UI artifact itself — every field, every inconsistency, every missing screen, all file:line cited (DOMAIN_KNOWLEDGE.md in the first zip).
+IndiGo's search-form structure specifically — verified live, encoded into a working, tested Pydantic contract with proof (Day4).
+The general OTA state-machine shape (booking states, payment failure modes) — but that's flagged [Inferred], industry-pattern knowledge,
+not observed on any specific real product this session.
+
+--> Repeat the PRocess
+
+Prompt1-
+
+Role- Principal architect ,
+Task role -full stack engineer ,
+domain -travel  ,
+ Feature -  Login - Order sucess ,
+ UI/ux- Refer .zip file ,
+  domainknowledge- learn from goibio ,makemytrip , skytravel
+
+   Techstack-python  Layer
+Technology
+API
+FastAPI, Pydantic v2
+Domain
+Plain Python service layer
+Data
+PostgreSQL, SQLAlchemy 2.x, Alembic
+Cache and locks
+Redis
+Async work
+Celery workers
+Events
+Kafka (Redpanda locally)
+Analytics
+pandas / Polars ETL
+Testing
+pytest, pytest-asyncio, hypothesis, testcontainers, locust
+Quality gates
+ruff, mypy --strict, bandit, pip-audit
+Ops
+Docker Compose, GitHub Actions, OpenTelemetry
+
+Question to you- domain knwoledge of the product scenario are u well wersed
+Task1- i need you understadn this requiremnet clearly with domain  expert 10 years and
+role -  full stack engineer  ( dont need prompt but confirmation )
+
+
+Prompt2-
+
+first learn for zip file and focus on only travel domain requirmenet
+
+
+Prompt3-
+
+## PROMPT TO PASTE
+
+```
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+We work in single verified vertical slices, never big-bang generation.
+Methodology for this slice, follow it exactly, in order:
+
+1. REFERENCE CHECK (5 min max): before writing any contract, verify the
+   real field/behavior for <SLICE_NAME> against a live reference product
+   (IndiGo at goindigo.in, or MakeMyTrip/Goibibo if IndiGo doesn't cover
+   it). Use the browser tool. Do not rely on memorized/trained knowledge
+   of these products — observe the live page directly.
+
+2. DOMAIN_KNOWLEDGE.md: write or extend the domain doc for this slice.
+   Every field/rule must be tagged with its evidence source:
+   - [Observed] — captured live from a real product this session, cite
+     the exact element/text seen.
+   - [Stitch] — from our UI mockup (stitch_modern_redesign/), cite
+     file:line.
+   - [Inferred] — standard domain pattern, not verified live. Must be
+     labeled, never presented as fact.
+   If the reference product's behavior conflicts with the Stitch mock,
+   log it as an open conflict, do not silently pick one.
+
+3. TEST FIRST (RED): write the pytest test file for <SLICE_NAME> before
+   any implementation exists. Run it. Confirm it fails
+   (ModuleNotFoundError or equivalent). Show me the actual failing output.
+
+4. IMPLEMENT (GREEN): write the minimal Pydantic v2 model / FastAPI route
+   / service function needed to make the tests in step 3 pass. Nothing
+   more — no speculative fields, no unused abstractions. Run the tests
+   again, show me the actual passing output.
+
+5. GATES: run ruff, mypy --strict (and bandit if the slice touches
+   auth/payment/PII). Fix every real finding — do not suppress or ignore.
+   Show me the actual command output, before and after any fix.
+
+6. REVIEW.md: write/append a review log for this slice with the real
+   RED output, real GREEN output, real gate output, and an explicit list
+   of what this slice does NOT cover yet (don't let one slice get
+   reported as "the feature is done").
+
+Stop after step 6. Do not start the next slice, do not touch other
+screens/endpoints, until I say go.
+
+Slice for this pass: <SLICE_NAME>
+Scope: <ONE ENDPOINT / ONE MODEL / ONE SCREEN'S INPUT CONTRACT — name it>
+Folder: <e.g. Day5/, or the real project path>
+```
+
+Prompt4 -
+
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+We work in single verified vertical slices, never big-bang generation.
+Methodology for this slice, follow it exactly, in order:
+
+1. READ BOTH SIDES FIRST. Read the existing frontend markup at
+   stitch_modern_redesign/login/code.html in full before touching
+   anything. Confirm what actually exists: the Apple/Google buttons
+   (currently no handler), the mobile-number input with a hardcoded "+1"
+   prefix, the "Send One-Time Code" button (currently type="button", no
+   JS wired, no OTP-entry step exists at all). Read the existing backend
+   login/OTP code that's already been built. Do not assume either side's
+   shape — confirm both by reading, and tell me what you found before
+   proceeding.
+
+2. REFERENCE CHECK (5 min max): verify live on goindigo.in (or
+   MakeMyTrip/Goibibo) how a real OTA actually wires this: what the
+   request/response looks like for "send OTP," what happens on wrong
+   OTP, what the resend-timer behavior is. Use the browser tool, observe
+   live, don't rely on memorized knowledge.
+
+3. DOMAIN_KNOWLEDGE.md: extend it with the exact contract between this
+   frontend and backend — every field tagged [Observed] / [Stitch] /
+   [Inferred] as usual. Specifically pin down:
+   - Request shape frontend sends on "Send One-Time Code" click
+     (mobile number + country code — note the mock hardcodes "+1", flag
+     that as a defect to fix, add a real country selector)
+   - Response shape backend returns (session_id, expiry)
+   - The OTP-entry UI does not exist yet in the mock — design it fresh,
+     matching the existing glassmorphic style (see login/code.html's
+     .glass-panel, .input-glow, .btn-gradient classes — reuse them,
+     don't invent a new visual language)
+   - Request/response shape for OTP verify
+   - Every error state the UI must show: wrong OTP, expired OTP, OTP
+     locked after 3 attempts, network failure, rate-limited — none of
+     these exist in the current mock, they must be designed net-new
+
+4. TEST FIRST (RED): write tests for the API client / request-building
+   logic and for the backend endpoint contract before wiring the actual
+   button handlers. Run them, confirm they fail, show me real output.
+
+5. IMPLEMENT (GREEN):
+   - Backend: confirm the existing OTP endpoints match the contract from
+     step 3 (adjust if the reference check in step 2 surfaced a gap)
+   - Frontend: replace the dead type="button" handlers with real fetch
+     calls to the backend, wire loading/disabled states on the buttons
+     while a request is in flight, wire every error state from step 3
+     to actual UI feedback (not silent failure)
+   - Build the missing OTP-entry screen/step now, reusing the login
+     screen's existing visual components
+   Run tests again, show me real passing output.
+
+6. GATES: ruff, mypy --strict, bandit (this slice touches auth — bandit
+   is mandatory, not optional). Fix every real finding, show before/after
+   output.
+
+7. REVIEW.md: append the real RED/GREEN/gate output for this slice, plus
+   an explicit list of what's still not covered (e.g. if social login
+   OAuth wiring isn't done in this pass, say so, don't imply it's done).
+
+Stop after step 7. Do not touch search/seat/checkout screens in this pass.
+
+Slice for this pass: Login frontend-backend integration (OTP request +
+verify + missing OTP-entry screen)
+Scope: login/code.html wiring only — the send-OTP button, the new
+OTP-entry step, and the two backend endpoints they call
+Folder: Day4/ (or wherever the real login backend currently lives — tell
+me the path if it's not in Day4/)
+
+
+Prompt5 -
+
+Saved: [Day4/PROMPT_connect_and_run_live.md](Day4/PROMPT_connect_and_run_live.md)
+
+This captures exactly what just happened, generalized so it's repeatable for any slice — search results, seat selection, checkout, etc.:
+
+1. **Read before building** — including the "stop and flag it" rule for when expected source is missing, which is exactly what happened when `irctc-travel-app/` vanished mid-session.
+2. **Stand up real infra, don't mock it** — with the explicit port-conflict protocol (check who owns a port before binding, remap rather than kill someone else's process) since that's what actually blocked progress twice (Postgres on 5432, backend on 8000/8001).
+3. **Drive it like a real user in the browser** — including the specific workaround for the auto-advancing OTP-box typing quirk, framed as an input-delivery fix only, never as fabricating a result.
+4. **Fix real bugs with real proof** — the `greenlet` crash and the partial-failure OTP gap are the template case for "don't quietly patch and move on, log the deeper gap."
+5. **Verify at the data layer, not just the UI** — a success screen isn't proof; the `psql` row check is the mandatory closing step.
+6. **Write the review log** — same structure as `REVIEW_login_live.md`.
+
+Fill in the 4 blanks (slice name, frontend/backend entry points, folder) for whichever slice comes next, and this prompt should get you the same rigor without you having to re-explain it each time.
+
+
+Prompt6 -
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+Task: connect the frontend to the backend for Login (OTP request → verify)
+and RUN IT LIVE — not a code review, not a plan, an actual working system
+I can click through in a browser with real data in the real database at
+the end.
+
+Follow this exact sequence, in order. Do not skip steps, do not claim a
+step is done without showing the real command output that proves it.
+
+1. READ BEFORE BUILDING. Read the actual frontend markup and the actual
+   backend code that currently exist for this slice, in full, before
+   changing anything. State what you found — don't assume either side's
+   shape. If a directory or file you expect is missing, STOP and say so
+   explicitly before reconstructing anything.
+
+2. STAND UP REAL INFRA, DON'T MOCK IT. Bring up real Postgres + Redis
+   (Docker Compose). Check for port conflicts before binding
+   (`lsof -nP -iTCP:<port> -sTCP:LISTEN`) — if something else already
+   owns the default port, remap to a free one rather than killing an
+   unrelated process. Run real Alembic migrations, confirm schema exists
+   (`\dt`) before moving on.
+
+3. START BOTH SIDES, CONFIRM HEALTH. Start the FastAPI backend, curl
+   `/health`, confirm a real 200. Serve the frontend statically. Confirm
+   both reachable before touching the browser.
+
+4. DRIVE IT LIKE A REAL USER, IN THE BROWSER. Enter a real phone number,
+   click Send OTP for real, read the real network request. Read the real
+   OTP from the backend log (this demo logs it instead of sending SMS —
+   never fabricate the code). Enter it in the OTP boxes, click Verify for
+   real.
+
+5. WHEN SOMETHING BREAKS, FIX IT FOR REAL, SHOW THE PROOF. If verify
+   fails, show the actual curl/server-log error, fix the real cause
+   (e.g. a missing dependency), restart, and re-run for real. If the bug
+   reveals a deeper state-machine gap, log it explicitly — don't quietly
+   patch and move on as if it never happened.
+
+6. VERIFY THE END STATE AT THE DATA LAYER. Query Postgres directly
+   (`psql`) and show the actual `users` / `refresh_tokens` rows created by
+   the actual click-through. A success screen alone is not proof.
+
+7. WRITE THE REVIEW LOG. What infra was stood up, what conflicts were
+   resolved, what broke and how it was fixed (with real output), the
+   end-to-end proof, and an explicit "what this does NOT cover" section.
+
+Slice for this pass: Login OTP request → verify
+Frontend entry point: Day4/frontend/login.html
+Backend entry point: Day4/backend/app/main.py (auth router:
+Day4/backend/app/api/routes_auth.py)
+Folder: Day4/
+
+
+Prompt7 - rate and review the code
+
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+Task: rate and review the code for <SLICE_NAME>. Do not summarize what the
+code does — I can read it. Find what's actually wrong with it, cite exact
+locations, and give a justified rating. No vague praise, no "looks good
+overall" without evidence.
+
+Follow this exact process:
+
+1. READ THE ACTUAL FILES. List every file in scope for this slice. Read
+   each one in full before writing any finding — don't review from memory
+   of having written it earlier in the conversation.
+
+2. FIND REAL DEFECTS, EACH WITH:
+   - Exact file:line citation
+   - Severity: CRITICAL (data loss / security breach / silent corruption)
+     / HIGH (real bug that will trigger in production, or a real security
+     default that's wrong) / MEDIUM (a real gap, lower likelihood or
+     impact) / LOW (style/maintainability, not a functional bug)
+   - The concrete failure scenario: what real input or timing triggers it,
+     not a hypothetical
+   - What the fix should be, in one sentence — not the full fix unless
+     asked
+
+   Check specifically for, don't skip these categories:
+   - Hardcoded secrets or insecure defaults (a secret with a fallback
+     value instead of a required env var is a finding, even if it's
+     labeled "dev-only")
+   - Check-then-act races (a SELECT followed by an INSERT/UPDATE with no
+     transaction/locking/upsert between them — this is the single most
+     common defect class in this codebase's history, per
+     DOMAIN_KNOWLEDGE.md and the cartsvc reference doc; look for it
+     explicitly in every service function that reads then writes)
+   - PII or secrets (OTP codes, tokens, phone numbers, card data) logged
+     in plaintext, even behind a "demo-only" comment
+   - Unhandled exceptions that would surface as a raw 500 instead of a
+     domain-meaningful error
+   - Client-side-only validation with no server-side re-validation, or
+     the reverse (server validation with client validation duplicated and
+     able to drift)
+   - Money/currency handled as float instead of int minor-units or Decimal
+   - Missing idempotency on any mutating endpoint that a client could
+     plausibly retry (double-tap, network retry)
+
+3. DO NOT FLAG what's actually fine just to pad the list. If the state
+   machine, layering, or HTTP status code choices are correct, say so
+   briefly and move on — don't invent nitpicks to seem thorough.
+
+4. GIVE A NUMERIC RATING (out of 10) with a one-paragraph justification
+   that explicitly ties the number to the findings above — e.g. "solid
+   shape, dragged down by N real security/concurrency findings that the
+   project's own gates (ruff/mypy --strict/bandit) would have caught had
+   they been run." The rating must be defensible from the findings list,
+   not a separate vibe.
+
+5. END WITH ONE QUESTION: which finding(s), if any, should be fixed right
+   now before moving to the next slice, versus logged and deferred.
+
+Do not use the ReportFindings tool unless explicitly told to — respond in
+plain text unless a code-review skill/command says otherwise.
+
+Slice for this pass: <SLICE_NAME>
+Files in scope: <list exact paths — do not let scope silently expand to
+the whole codebase>
+
+
+Prompt8--
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+Task: close two known findings from the Login slice review
+(Day4/REVIEW_login_live.md and the code review that followed it) before any
+new slice starts. Do not touch other screens/endpoints.
+
+Findings to close:
+
+1. HIGH — hardcoded default JWT secret
+   File: Day4/backend/app/config.py:11
+   `jwt_secret: str = "dev-secret-change-in-production"`
+   Fix: require JWT_SECRET from the environment with no silent fallback —
+   raise at startup if unset, instead of defaulting to a value that could
+   ship unnoticed.
+
+2. HIGH — unhandled race condition on user creation
+   File: Day4/backend/app/services/auth_service.py:96-101
+   SELECT-then-INSERT with no handling for the concurrent-insert case; the
+   DB unique constraint on `phone` will raise IntegrityError on a race,
+   currently unhandled, surfaces as a raw 500.
+   Fix: catch the IntegrityError and re-fetch the existing user, or use an
+   upsert (INSERT ... ON CONFLICT) instead of check-then-insert.
+
+Follow this sequence:
+
+1. RED: write a test that reproduces each finding before fixing it.
+   - For finding 1: a test asserting the app fails to start / raises when
+     JWT_SECRET is unset (don't just assert the default string is gone —
+     prove the unsafe path is actually blocked).
+   - For finding 2: a test that simulates two concurrent `verify_otp`
+     calls for the same new phone number and asserts both return the same
+     user with no unhandled exception.
+   Run both, confirm they fail against the current code, show real output.
+
+2. GREEN: implement the minimal fix for each. Re-run the same tests, show
+   real passing output.
+
+3. GATES: ruff, mypy --strict, bandit — bandit is mandatory here since
+   both findings are security-adjacent. Show before/after output if
+   anything is flagged.
+
+4. LIVE RE-VERIFY: re-run the actual login flow live (per
+   Day4/PROMPT_login_run_live_FILLED.md steps 3-6) to confirm the fix
+   didn't break the working happy path. Real browser click-through, real
+   DB row check, not just the unit tests.
+
+5. REVIEW.md: append to Day4/REVIEW_login_live.md — what was fixed, the
+   real RED/GREEN/gate output, and confirmation the live flow still works
+   post-fix.
+
+Do not start Search Flights or any other slice until this is done and
+confirmed.
+
+
+Prompt9--
+
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+We work in single verified vertical slices, never big-bang generation.
+This slice already has a tested contract — Day4/src/international_smile/
+flight_search.py (FlightSearchRequest, 11 passing tests, gates clean, see
+Day4/REVIEW.md). This pass wires that contract into a real FastAPI route,
+a minimal search response, and a real frontend screen, then runs it live —
+following the same process as the Login slice.
+
+Follow this exact sequence, in order. Do not skip steps, do not claim a
+step is done without showing real command output.
+
+1. READ FIRST. Read Day4/src/international_smile/flight_search.py and
+   Day4/DOMAIN_KNOWLEDGE.md §1-2 in full before writing the route. Confirm
+   the 4 open conflicts logged there (Multi City in scope? special-fare
+   programs? pay-with-points? promo-code placement?) — if still
+   unresolved, ask before assuming an answer; do not silently pick one.
+
+2. REFERENCE CHECK (5 min max): re-verify on goindigo.in what a real
+   search RESPONSE looks like — result list shape, fields per flight,
+   price display — since only the search REQUEST was verified so far, not
+   the results page. Tag new findings [Observed] in DOMAIN_KNOWLEDGE.md.
+
+3. TEST FIRST (RED): write a test for a new `SearchResult` /
+   `FlightOption` Pydantic model and for the `POST /search/flights` route
+   (using FastAPI's TestClient), before either exists. Run it, confirm it
+   fails, show real output.
+
+4. IMPLEMENT (GREEN):
+   - Backend: add the route wrapping FlightSearchRequest, returning a
+     small set of realistic mock flight options (no live GDS integration
+     in this slice — flag that explicitly as a scope boundary, not
+     implied as done)
+   - Frontend: build search_flights.html adapted from
+     stitch_modern_irctc_redesign/search_flights/code.html, rebranded
+     International Smile, wired to the real endpoint (replace the dead
+     "Search Flights" button with a real fetch call)
+   Run tests again, show real passing output.
+
+5. GATES: ruff, mypy --strict on the new code. Show output.
+
+6. LIVE RUN: stand up backend + frontend together (reuse the running
+   Postgres/Redis containers if still up, confirm with `docker ps` first
+   rather than assuming), drive a real search in the browser (Delhi →
+   Mumbai or similar), confirm the real network request/response, screenshot
+   the rendered results.
+
+7. REVIEW.md: append the real RED/GREEN/gate/live output, plus an
+   explicit "what this does NOT cover" section — no live fare data, no
+   persistence of search history, no pagination, whatever else is out of
+   scope for this pass.
+
+Stop after step 7. Do not touch select_flight/select_seat/checkout in
+this pass.
+
+Slice for this pass: Search Flights (request already contracted, this
+pass adds the route + response + live-wired frontend)
+Folder: Day4/
+
+Prompt10--
+
+
+Role: Principal architect + full-stack engineer, travel domain.
+Project: International Smile (flight booking). Stack: FastAPI, Pydantic v2,
+PostgreSQL/SQLAlchemy 2.x/Alembic, Redis, Celery, Kafka, pytest, ruff,
+mypy --strict, bandit.
+
+Task: integrate Login and Search Flights — right now they are two
+disconnected features that happen to coexist in the same browser session.
+Close that gap for real, not by assumption.
+
+Context you must read first (do not skip): DOMAIN_KNOWLEDGE.md §2.6 left
+this open as an unresolved product decision — does login gate the whole
+funnel at entry (classic pattern), or is it deferred to checkout while
+search/browse stays guest-accessible (the pattern actually [Observed] live
+on goindigo.in this session — IndiGo's search widget requires no login)?
+This has NOT been answered by the user as of this prompt. Default to the
+observed IndiGo pattern (guest search allowed, login required only when
+proceeding past search) UNLESS the user has since told you otherwise —
+state this assumption explicitly before writing code, don't bury it.
+
+Follow this exact sequence, in order. Real output only, no claims.
+
+1. READ FIRST. Read the current state of both slices in full:
+   Day4/backend/app/api/routes_search.py, Day4/backend/app/api/
+   routes_auth.py, Day4/backend/app/core/security.py (token creation —
+   there is currently no token verification/dependency anywhere),
+   Day4/frontend/login.html, Day4/frontend/search_flights.html. Confirm:
+   search has zero auth awareness today (no header sent, no check made).
+
+2. DESIGN THE ACTUAL INTEGRATION CONTRACT, per the guest-search decision
+   above:
+   - Add a reusable `get_current_user_optional` FastAPI dependency
+     (Authorization: Bearer <token>, decodes via the existing JWT secret/
+     algorithm in app/core/security.py, returns the user if a valid token
+     is present, returns None if absent — does NOT reject an absent
+     token, since search is guest-accessible)
+   - Add a separate `get_current_user_required` dependency (same decode,
+     but raises 401 if missing/invalid) — build it now even though no
+     route uses it yet, since checkout/booking will need it in a future
+     slice. Do not wire it to /search/flights.
+   - Wire `get_current_user_optional` into POST /search/flights. If a
+     user is present, the response should reflect that (e.g. echo
+     `searched_by_user_id` in SearchResponse) — this is the actual,
+     observable proof of integration, not just "the dependency exists."
+   - Frontend: search_flights.html reads `access_token` from localStorage
+     if present and sends it as `Authorization: Bearer <token>` on the
+     search request. If absent, search still works exactly as today.
+
+3. TEST FIRST (RED). Write tests before implementing:
+   - A logged-in search (valid token attached) returns
+     `searched_by_user_id` matching the token's subject
+   - A guest search (no token) still succeeds, `searched_by_user_id` is
+     null
+   - An invalid/expired token on search does NOT reject the request
+     (guest-fallback behavior, not a 401) — assert this explicitly, don't
+     leave it untested
+   - `get_current_user_required` (once wired to nothing yet) raises 401
+     when no token is present, standalone unit test
+   Run them, confirm real failure output.
+
+4. IMPLEMENT (GREEN). Minimal code per step 2. Re-run tests, show real
+   passing output.
+
+5. GATES: ruff, mypy --strict, bandit (mandatory — this touches auth
+   token handling). Show output.
+
+6. LIVE RUN: real login → real search in the same browser session,
+   confirm via the actual network request that the Authorization header
+   is now present and the response actually contains the matching
+   `searched_by_user_id` — then repeat as a guest (clear localStorage
+   first) and confirm search still works with no user id. Two real runs,
+   not one assumed to cover both.
+
+7. REVIEW.md: real RED/GREEN/gate/live output for both the logged-in and
+   guest paths, plus explicit note that `get_current_user_required`
+   exists but is not yet enforced anywhere — that's for the checkout
+   slice, not this one.
+
+Stop after step 7. Do not add the required-auth gate to any route in this
+pass — that's scope creep past what "integrate Login and Search" means
+today.
+
+Slice for this pass: Login + Search integration (optional-auth passthrough)
+Folder: Day4/
