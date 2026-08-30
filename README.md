@@ -13,3 +13,5 @@ Claude, MCP servers, and CI integration.
 - `backend-agent-lab/`, `taskflow-ops/` — mini-project scaffolds
 - `Tier 1/2/3 (*).md` — tiered exercise sets, basic to advanced
 - `production.md`, `simple-prompts-cartsvc.md` — worked examples
+
+- `README.md` — this file, added to test ci-guardian's PR review pipeline
